@@ -1,4 +1,4 @@
-(asdf:defsystem libevent2
+(asdf:defsystem cl-libevent2
   :author "Andrew Danger Lyon <orthecreedence@gmail.com>"
   :license "MIT"
   :version "0.1.1"
