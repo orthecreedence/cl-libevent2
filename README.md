@@ -11,7 +11,9 @@ Who needs documentation when you follow simple function-naming conventions?
 - The package prefix is `le:`
 - Underscores become dashes
 
-That's actually it.
+That's actually it. For a reference on Libevent2 itself, see the [libevent
+book](http://www.wangafu.net/~nickm/libevent-book/) and the [libevent
+reference](http://www.wangafu.net/~nickm/libevent-2.0/doxygen/html/).
 
 ### Example
 ```c
@@ -39,9 +41,9 @@ If a new version of libevent comes out, you can regenerate these bindings by
 doing the following (if you have [swig](http://www.swig.org/) installed):
 
 ```bash
-cd /path/to/asdf/libevent2
+cd /path/to/cl-libevent2
 vim scripts/bindings.i      # update "%include" paths to point at your libevent headers
-./scripts/generate          # must be run in libevent2 folder
+./scripts/generate          # must be run in cl-libevent2 folder
 ```
 
 This will generate new bindings in their entirety (it's fully automated).
