@@ -113,6 +113,77 @@ struct evkeyvalq {
     struct evkeyval **thq_last;
 };
 
+struct evhttp_connection {
+    /* struct next (server only) */
+    struct evhttp_connection *tqe_next;
+    struct evhttp_connection **tqe_prev;
+
+    evutil_socket_t fd;
+    struct bufferevent *bufev;
+    struct event retry_ev;
+    char *bind_address;
+    u_short bind_port;
+    char *address;
+    u_short port;
+    size_t max_headers_size;
+    ev_uint64_t max_body_size;
+    int flags;
+    int timeout;
+    int retry_cnt;
+    int retry_max;
+    enum evhttp_connection_state state;
+    struct evhttp *http_server;
+
+    /* struct requests */
+    struct evhttp_request *tqh_first;
+    struct evhttp_request **tqh_last;
+
+    /* everything after this point can be safely ignored, but included to be safe... */
+
+    void (*cb)(struct evhttp_connection *, void *);
+    void *cb_arg;
+    void (*closecb)(struct evhttp_connection *, void *);
+    void *closecb_arg;
+    struct deferred_cb read_more_deferred_cb;
+    struct event_base *base;
+    struct evdns_base *dns_base;
+};
+
+struct evhttp_request {
+    /* struct next */
+    struct evhttp_request *tqe_next;
+    struct evhttp_request **tqe_prev;
+
+    struct evhttp_connection *evcon;
+    int flags;
+    struct evkeyvalq *input_headers;
+    struct evkeyvalq *output_headers;
+    char *remote_host;
+    ev_uint16_t remote_port;
+    char *host_cache;
+    enum evhttp_request_kind kind;
+    enum evhttp_cmd_type type;
+    size_t headers_size;
+    size_t body_size;
+    char *uri;
+    struct evhttp_uri *uri_elems;
+    char major;
+    char minor;
+
+    /* everything after this point can be safely ignored, but included to be safe... */
+
+    int response_code;
+    char *response_code_line;
+    struct evbuffer *input_buffer;
+    ev_int64_t ntoread;
+    unsigned chunked:1,
+        userdone:1;
+    struct evbuffer *output_buffer;
+    void (*cb)(struct evhttp_request *, void *);
+    void *cb_arg;
+    void (*chunk_cb)(struct evhttp_request *, void *);
+};
+
 %include "/usr/local/include/event2/event-config.h"
 %include "/usr/local/include/event2/util.h"
 
