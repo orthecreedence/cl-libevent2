@@ -6,6 +6,7 @@
 (export '#.(lispify "AF_INET6" 'constant))
 (export '#.(lispify "SOCK_STREAM" 'constant))
 (export '#.(lispify "IPPROTO_TCP" 'constant))
+(export '#.(lispify "evhttp_connection_state" 'enumname))
 (export '#.(lispify "_EVENT_HAVE_FCNTL_H" 'constant))
 (export '#.(lispify "_EVENT_HAVE_GETTIMEOFDAY" 'constant))
 (export '#.(lispify "_EVENT_HAVE_INTTYPES_H" 'constant))
