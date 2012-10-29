@@ -113,6 +113,19 @@ struct evkeyvalq {
     struct evkeyval **thq_last;
 };
 
+%include "/usr/local/include/event2/event-config.h"
+%include "/usr/local/include/event2/util.h"
+
+typedef unsigned short ev_uint16_t;
+
+%include "/usr/local/include/event2/event.h"
+%include "/usr/local/include/event2/dns.h"
+%include "/usr/local/include/event2/bufferevent.h"
+%include "/usr/local/include/event2/bufferevent_struct.h"
+%include "/usr/local/include/event2/buffer.h"
+%include "/usr/local/include/event2/listener.h"
+%include "/usr/local/include/event2/http.h"
+
 enum evhttp_connection_state {
     EVCON_DISCONNECTED,    /**< not currently connected not trying either*/
     EVCON_CONNECTING,    /**< tries to currently connect */
@@ -195,17 +208,4 @@ struct evhttp_request {
     void *cb_arg;
     void (*chunk_cb)(struct evhttp_request *, void *);
 };
-
-%include "/usr/local/include/event2/event-config.h"
-%include "/usr/local/include/event2/util.h"
-
-typedef unsigned short ev_uint16_t;
-
-%include "/usr/local/include/event2/event.h"
-%include "/usr/local/include/event2/dns.h"
-%include "/usr/local/include/event2/bufferevent.h"
-%include "/usr/local/include/event2/bufferevent_struct.h"
-%include "/usr/local/include/event2/buffer.h"
-%include "/usr/local/include/event2/listener.h"
-%include "/usr/local/include/event2/http.h"
 
