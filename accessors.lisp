@@ -23,5 +23,3 @@
 (make-accessors #.(libevent2::lispify "evbuffer_ptr__internal" 'classname))
 (make-accessors #.(libevent2::lispify "evbuffer_iovec" 'classname))
 (make-accessors #.(libevent2::lispify "evbuffer_cb_info" 'classname))
-(make-accessors #.(libevent2::lispify "evhttp_connection" 'classname))
-(make-accessors #.(libevent2::lispify "evhttp_request" 'classname))

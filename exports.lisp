@@ -454,4 +454,3 @@
 (export '#.(lispify "evhttp_uri_parse" 'function))
 (export '#.(lispify "evhttp_uri_free" 'function))
 (export '#.(lispify "evhttp_uri_join" 'function))
-(export '#.(lispify "evhttp_connection_state" 'enumname))
