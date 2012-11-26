@@ -1,7 +1,7 @@
 (asdf:defsystem cl-libevent2
   :author "Andrew Danger Lyon <orthecreedence@gmail.com>"
   :license "MIT"
-  :version "0.1.3"
+  :version "0.1.4"
   :description "Low-level libevent2 bindings for Common Lisp."
   :depends-on (#:cffi)
   :components ((:file "libevent2")
