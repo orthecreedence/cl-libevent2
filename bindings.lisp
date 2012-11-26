@@ -8,6 +8,8 @@
 
 
 
+(cl:defconstant #.(lispify "_EVENT_HAVE_OPENSSL" 'constant) 1)
+
 (cl:defconstant #.(lispify "AF_UNSPEC" 'constant) 0)
 
 (cl:defconstant #.(lispify "AF_UNIX" 'constant) 1)
@@ -1030,6 +1032,34 @@
 	(#.(lispify "timeout_read" 'slotname) #.(lispify "timeval" 'classname))
 	(#.(lispify "timeout_write" 'slotname) #.(lispify "timeval" 'classname))
 	(#.(lispify "enabled" 'slotname) :short))
+
+(cffi:defcenum #.(lispify "bufferevent_ssl_state" 'enumname)
+	(#.(lispify "BUFFEREVENT_SSL_OPEN" 'enumvalue :keyword) #.0)
+	(#.(lispify "BUFFEREVENT_SSL_CONNECTING" 'enumvalue :keyword) #.1)
+	(#.(lispify "BUFFEREVENT_SSL_ACCEPTING" 'enumvalue :keyword) #.2))
+
+(cffi:defcfun ("bufferevent_openssl_filter_new" #.(lispify "bufferevent_openssl_filter_new" 'function)) :pointer
+  (base :pointer)
+  (underlying :pointer)
+  (ssl :pointer)
+  (state #.(lispify "bufferevent_ssl_state" 'enumname))
+  (options :int))
+
+(cffi:defcfun ("bufferevent_openssl_socket_new" #.(lispify "bufferevent_openssl_socket_new" 'function)) :pointer
+  (base :pointer)
+  (fd :int)
+  (ssl :pointer)
+  (state #.(lispify "bufferevent_ssl_state" 'enumname))
+  (options :int))
+
+(cffi:defcfun ("bufferevent_openssl_get_ssl" #.(lispify "bufferevent_openssl_get_ssl" 'function)) :pointer
+  (bufev :pointer))
+
+(cffi:defcfun ("bufferevent_ssl_renegotiate" #.(lispify "bufferevent_ssl_renegotiate" 'function)) :int
+  (bev :pointer))
+
+(cffi:defcfun ("bufferevent_get_openssl_error" #.(lispify "bufferevent_get_openssl_error" 'function)) :unsigned-long
+  (bev :pointer))
 
 (cffi:defcstruct #.(lispify "evbuffer_ptr" 'classname)
 	(#.(lispify "pos" 'slotname) :pointer)
