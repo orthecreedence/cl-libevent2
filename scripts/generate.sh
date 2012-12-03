@@ -6,6 +6,7 @@
 #
 
 swig -cffi -module bindings -noswig-lisp -o bindings.lisp scripts/bindings.i 
+swig -cffi -module bindings-ssl -noswig-lisp -o bindings-ssl.lisp scripts/ssl.i 
 
 # nice going, swig. once again, i'm left to clean up your mess
 sed -i 's|( 127)|(- 127)|' bindings.lisp
@@ -23,6 +24,17 @@ cat bindings.lisp | \
     sed 's|^(cl:defconstant.*\(#.(lispify[^)]\+)\).*|\1|' | \
     sed 's|^\(.*\)$|(export '"'"'\1)|' \
     >> exports.lisp
+
+echo -ne "(in-package :libevent2-ssl)\n\n" > exports-ssl.lisp
+cat bindings-ssl.lisp | \
+    grep -e '^(\(cffi\|cl\):' | \
+    grep -v 'defcstruct' | \
+    sed 's|^(cffi:defcfun.*" \(#.(le::lispify[^)]\+)\).*|\1|' | \
+    sed 's|^(cffi:defcenum.*\(#.(le::lispify[^)]\+)\).*|\1|' | \
+    sed 's|^(cl:defconstant.*\(#.(le::lispify[^)]\+)\).*|\1|' | \
+    sed 's|^\(.*\)$|(export '"'"'\1)|' | \
+	sed 's|(le::lispify\([^)]\+\))|(le::lispify\1 :libevent2-ssl)|' \
+	>> exports-ssl.lisp
 
 # ------------------------------------------------------------------------------
 # make our accessors
