@@ -24,7 +24,7 @@
 
 (cffi:defcfun ("bufferevent_openssl_socket_new" #.(le::lispify "bufferevent_openssl_socket_new" 'function)) :pointer
   (base :pointer)
-  (fd :pointer)
+  (fd :int)
   (ssl :pointer)
   (state #.(le::lispify "bufferevent_ssl_state" 'enumname))
   (options :int))

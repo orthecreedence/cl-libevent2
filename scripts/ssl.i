@@ -9,6 +9,8 @@
 /* enable SSL */
 #define _EVENT_HAVE_OPENSSL 1
 
+typedef int evutil_socket_t;
+typedef unsigned long size_t;
 typedef unsigned short ev_uint16_t;
 
 %include "/usr/local/include/event2/bufferevent_ssl.h"
