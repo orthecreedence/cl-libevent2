@@ -102,7 +102,7 @@
 
 (cl:defconstant #.(le::lispify "EV_INT8_MAX" 'constant) 127)
 
-(cl:defconstant #.(le::lispify "EV_INT8_MIN" 'constant) (cl:- ( 127) 1))
+(cl:defconstant #.(le::lispify "EV_INT8_MIN" 'constant) (cl:- (- 127) 1))
 
 (cffi:defcfun ("evutil_socketpair" #.(le::lispify "evutil_socketpair" 'function)) :int
   (d :int)

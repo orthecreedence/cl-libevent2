@@ -11,6 +11,8 @@ swig -cffi -module bindings-ssl -noswig-lisp -o bindings-ssl.lisp scripts/ssl.i
 # nice going, swig. once again, i'm left to clean up your mess
 sed -i 's|( 127)|(- 127)|' bindings.lisp
 sed -i 's|(cl:- "2.0.20" "stable")|"2.0.20-stable"|' bindings.lisp
+sed -i 's|( 127)|(- 127)|' bindings-ssl.lisp
+sed -i 's|(cl:- "2.0.20" "stable")|"2.0.20-stable"|' bindings-ssl.lisp
 
 # ------------------------------------------------------------------------------
 # make our exports
