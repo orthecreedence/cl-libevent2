@@ -10,6 +10,225 @@
 
 (cl:defconstant #.(le::lispify "_EVENT_HAVE_OPENSSL" 'constant) 1)
 
+(cl:defconstant #.(le::lispify "_EVENT_HAVE_FCNTL_H" 'constant) 1)
+
+(cl:defconstant #.(le::lispify "_EVENT_HAVE_GETTIMEOFDAY" 'constant) 1)
+
+(cl:defconstant #.(le::lispify "_EVENT_HAVE_INTTYPES_H" 'constant) 1)
+
+(cl:defconstant #.(le::lispify "_EVENT_HAVE_MEMORY_H" 'constant) 1)
+
+(cl:defconstant #.(le::lispify "_EVENT_HAVE_OPENSSL_BIO_H" 'constant) 1)
+
+(cl:defconstant #.(le::lispify "_EVENT_HAVE_PUTENV" 'constant) 1)
+
+(cl:defconstant #.(le::lispify "_EVENT_HAVE_SIGNAL" 'constant) 1)
+
+(cl:defconstant #.(le::lispify "_EVENT_HAVE_STDARG_H" 'constant) 1)
+
+(cl:defconstant #.(le::lispify "_EVENT_HAVE_STDDEF_H" 'constant) 1)
+
+(cl:defconstant #.(le::lispify "_EVENT_HAVE_STDINT_H" 'constant) 1)
+
+(cl:defconstant #.(le::lispify "_EVENT_HAVE_STDLIB_H" 'constant) 1)
+
+(cl:defconstant #.(le::lispify "_EVENT_HAVE_STRINGS_H" 'constant) 1)
+
+(cl:defconstant #.(le::lispify "_EVENT_HAVE_STRING_H" 'constant) 1)
+
+(cl:defconstant #.(le::lispify "_EVENT_HAVE_STRTOLL" 'constant) 1)
+
+(cl:defconstant #.(le::lispify "_EVENT_HAVE_STRUCT_ADDRINFO" 'constant) 1)
+
+(cl:defconstant #.(le::lispify "_EVENT_HAVE_STRUCT_IN6_ADDR" 'constant) 1)
+
+(cl:defconstant #.(le::lispify "_EVENT_HAVE_STRUCT_IN6_ADDR_S6_ADDR16" 'constant) 1)
+
+(cl:defconstant #.(le::lispify "_EVENT_HAVE_STRUCT_IN6_ADDR_S6_ADDR32" 'constant) 1)
+
+(cl:defconstant #.(le::lispify "_EVENT_HAVE_STRUCT_SOCKADDR_IN6" 'constant) 1)
+
+(cl:defconstant #.(le::lispify "_EVENT_HAVE_STRUCT_SOCKADDR_STORAGE" 'constant) 1)
+
+(cl:defconstant #.(le::lispify "_EVENT_HAVE_STRUCT_SOCKADDR_STORAGE_SS_FAMILY" 'constant) 1)
+
+(cl:defconstant #.(le::lispify "_EVENT_HAVE_SYS_PARAM_H" 'constant) 1)
+
+(cl:defconstant #.(le::lispify "_EVENT_HAVE_SYS_STAT_H" 'constant) 1)
+
+(cl:defconstant #.(le::lispify "_EVENT_HAVE_SYS_TIME_H" 'constant) 1)
+
+(cl:defconstant #.(le::lispify "_EVENT_HAVE_SYS_TYPES_H" 'constant) 1)
+
+(cl:defconstant #.(le::lispify "_EVENT_HAVE_TIMERCLEAR" 'constant) 1)
+
+(cl:defconstant #.(le::lispify "_EVENT_HAVE_TIMERCMP" 'constant) 1)
+
+(cl:defconstant #.(le::lispify "_EVENT_HAVE_TIMERISSET" 'constant) 1)
+
+(cl:defconstant #.(le::lispify "_EVENT_HAVE_UINT16_T" 'constant) 1)
+
+(cl:defconstant #.(le::lispify "_EVENT_HAVE_UINT32_T" 'constant) 1)
+
+(cl:defconstant #.(le::lispify "_EVENT_HAVE_UINT64_T" 'constant) 1)
+
+(cl:defconstant #.(le::lispify "_EVENT_HAVE_UINT8_T" 'constant) 1)
+
+(cl:defconstant #.(le::lispify "_EVENT_HAVE_UINTPTR_T" 'constant) 1)
+
+(cl:defconstant #.(le::lispify "_EVENT_HAVE_UMASK" 'constant) 1)
+
+(cl:defconstant #.(le::lispify "_EVENT_HAVE_UNISTD_H" 'constant) 1)
+
+(cl:defconstant #.(le::lispify "_EVENT_NUMERIC_VERSION" 'constant) #x02001400)
+
+(cl:defconstant #.(le::lispify "_EVENT_SIZEOF_INT" 'constant) 4)
+
+(cl:defconstant #.(le::lispify "_EVENT_SIZEOF_LONG" 'constant) 4)
+
+(cl:defconstant #.(le::lispify "_EVENT_SIZEOF_LONG_LONG" 'constant) 8)
+
+(cl:defconstant #.(le::lispify "_EVENT_SIZEOF_SHORT" 'constant) 2)
+
+(cl:defconstant #.(le::lispify "_EVENT_SIZEOF_SIZE_T" 'constant) 4)
+
+(cl:defconstant #.(le::lispify "_EVENT_SIZEOF_VOID_P" 'constant) 4)
+
+(cl:defconstant #.(le::lispify "_EVENT_STDC_HEADERS" 'constant) 1)
+
+(cl:defconstant #.(le::lispify "_EVENT_TIME_WITH_SYS_TIME" 'constant) 1)
+
+(cl:defconstant #.(le::lispify "EV_UINT8_MAX" 'constant) 255)
+
+(cl:defconstant #.(le::lispify "EV_INT8_MAX" 'constant) 127)
+
+(cl:defconstant #.(le::lispify "EV_INT8_MIN" 'constant) (cl:- ( 127) 1))
+
+(cffi:defcfun ("evutil_socketpair" #.(le::lispify "evutil_socketpair" 'function)) :int
+  (d :int)
+  (type :int)
+  (protocol :int)
+  (sv :pointer))
+
+(cffi:defcfun ("evutil_make_socket_nonblocking" #.(le::lispify "evutil_make_socket_nonblocking" 'function)) :int
+  (sock :int))
+
+(cffi:defcfun ("evutil_make_listen_socket_reuseable" #.(le::lispify "evutil_make_listen_socket_reuseable" 'function)) :int
+  (sock :int))
+
+(cffi:defcfun ("evutil_make_socket_closeonexec" #.(le::lispify "evutil_make_socket_closeonexec" 'function)) :int
+  (sock :int))
+
+(cffi:defcfun ("evutil_closesocket" #.(le::lispify "evutil_closesocket" 'function)) :int
+  (sock :int))
+
+(cffi:defcfun ("evutil_strtoll" #.(le::lispify "evutil_strtoll" 'function)) :pointer
+  (s :string)
+  (endptr :pointer)
+  (base :int))
+
+(cffi:defcfun ("evutil_snprintf" #.(le::lispify "evutil_snprintf" 'function)) :int
+  (buf :string)
+  (buflen :unsigned-long)
+  (format :string)
+  &rest)
+
+(cffi:defcfun ("evutil_vsnprintf" #.(le::lispify "evutil_vsnprintf" 'function)) :int
+  (buf :string)
+  (buflen :unsigned-long)
+  (format :string)
+  (ap :pointer))
+
+(cffi:defcfun ("evutil_inet_ntop" #.(le::lispify "evutil_inet_ntop" 'function)) :string
+  (af :int)
+  (src :pointer)
+  (dst :string)
+  (len :unsigned-long))
+
+(cffi:defcfun ("evutil_inet_pton" #.(le::lispify "evutil_inet_pton" 'function)) :int
+  (af :int)
+  (src :string)
+  (dst :pointer))
+
+(cffi:defcfun ("evutil_parse_sockaddr_port" #.(le::lispify "evutil_parse_sockaddr_port" 'function)) :int
+  (str :string)
+  (out :pointer)
+  (outlen :pointer))
+
+(cffi:defcfun ("evutil_sockaddr_cmp" #.(le::lispify "evutil_sockaddr_cmp" 'function)) :int
+  (sa1 :pointer)
+  (sa2 :pointer)
+  (include_port :int))
+
+(cffi:defcfun ("evutil_ascii_strcasecmp" #.(le::lispify "evutil_ascii_strcasecmp" 'function)) :int
+  (str1 :string)
+  (str2 :string))
+
+(cffi:defcfun ("evutil_ascii_strncasecmp" #.(le::lispify "evutil_ascii_strncasecmp" 'function)) :int
+  (str1 :string)
+  (str2 :string)
+  (n :unsigned-long))
+
+(cl:defconstant #.(le::lispify "EVUTIL_EAI_ADDRFAMILY" 'constant) -901)
+
+(cl:defconstant #.(le::lispify "EVUTIL_EAI_AGAIN" 'constant) -902)
+
+(cl:defconstant #.(le::lispify "EVUTIL_EAI_BADFLAGS" 'constant) -903)
+
+(cl:defconstant #.(le::lispify "EVUTIL_EAI_FAIL" 'constant) -904)
+
+(cl:defconstant #.(le::lispify "EVUTIL_EAI_FAMILY" 'constant) -905)
+
+(cl:defconstant #.(le::lispify "EVUTIL_EAI_MEMORY" 'constant) -906)
+
+(cl:defconstant #.(le::lispify "EVUTIL_EAI_NODATA" 'constant) -907)
+
+(cl:defconstant #.(le::lispify "EVUTIL_EAI_NONAME" 'constant) -908)
+
+(cl:defconstant #.(le::lispify "EVUTIL_EAI_SERVICE" 'constant) -909)
+
+(cl:defconstant #.(le::lispify "EVUTIL_EAI_SOCKTYPE" 'constant) -910)
+
+(cl:defconstant #.(le::lispify "EVUTIL_EAI_SYSTEM" 'constant) -911)
+
+(cl:defconstant #.(le::lispify "EVUTIL_EAI_CANCEL" 'constant) -90001)
+
+(cl:defconstant #.(le::lispify "EVUTIL_AI_PASSIVE" 'constant) #x1000)
+
+(cl:defconstant #.(le::lispify "EVUTIL_AI_CANONNAME" 'constant) #x2000)
+
+(cl:defconstant #.(le::lispify "EVUTIL_AI_NUMERICHOST" 'constant) #x4000)
+
+(cl:defconstant #.(le::lispify "EVUTIL_AI_NUMERICSERV" 'constant) #x8000)
+
+(cl:defconstant #.(le::lispify "EVUTIL_AI_V4MAPPED" 'constant) #x10000)
+
+(cl:defconstant #.(le::lispify "EVUTIL_AI_ALL" 'constant) #x20000)
+
+(cl:defconstant #.(le::lispify "EVUTIL_AI_ADDRCONFIG" 'constant) #x40000)
+
+(cffi:defcfun ("evutil_getaddrinfo" #.(le::lispify "evutil_getaddrinfo" 'function)) :int
+  (nodename :string)
+  (servname :string)
+  (hints_in :pointer)
+  (res :pointer))
+
+(cffi:defcfun ("evutil_freeaddrinfo" #.(le::lispify "evutil_freeaddrinfo" 'function)) :void
+  (ai :pointer))
+
+(cffi:defcfun ("evutil_gai_strerror" #.(le::lispify "evutil_gai_strerror" 'function)) :string
+  (err :int))
+
+(cffi:defcfun ("evutil_secure_rng_get_bytes" #.(le::lispify "evutil_secure_rng_get_bytes" 'function)) :void
+  (buf :pointer)
+  (n :unsigned-long))
+
+(cffi:defcfun ("evutil_secure_rng_init" #.(le::lispify "evutil_secure_rng_init" 'function)) :int)
+
+(cffi:defcfun ("evutil_secure_rng_add_bytes" #.(le::lispify "evutil_secure_rng_add_bytes" 'function)) :void
+  (dat :string)
+  (datlen :unsigned-long))
+
 (cffi:defcenum #.(le::lispify "bufferevent_ssl_state" 'enumname)
 	(#.(le::lispify "BUFFEREVENT_SSL_OPEN" 'enumvalue :keyword) #.0)
 	(#.(le::lispify "BUFFEREVENT_SSL_CONNECTING" 'enumvalue :keyword) #.1)
