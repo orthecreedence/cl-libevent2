@@ -88,7 +88,7 @@ struct addrinfo {
     struct evutil_addrinfo  *ai_next;
 };
 
-/* for windows */
+/* for windows/BSD */
 struct evutil_addrinfo {
     int     ai_flags;     /* AI_PASSIVE, AI_CANONNAME, AI_NUMERICHOST */
     int     ai_family;    /* PF_xxx */
