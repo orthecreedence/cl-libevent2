@@ -51,6 +51,23 @@ struct sockaddr_in {
     char sin_zero_7;
 };
 
+/* why doesn't libevent wrap this for me??? ='( */
+struct sockaddr_in_bsd {
+    char sin_len;
+    char sin_family;
+    unsigned short sin_port;
+    unsigned int sin_addr;
+
+    char sin_zero_0;
+    char sin_zero_1;
+    char sin_zero_2;
+    char sin_zero_3;
+    char sin_zero_4;
+    char sin_zero_5;
+    char sin_zero_6;
+    char sin_zero_7;
+};
+
 struct sockaddr_in6 {
     unsigned short sin6_family;
     unsigned short sin6_port;

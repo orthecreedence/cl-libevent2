@@ -12,6 +12,7 @@
 
 (make-accessors #.(libevent2::lispify "timeval" 'classname))
 (make-accessors #.(libevent2::lispify "sockaddr_in" 'classname))
+(make-accessors #.(libevent2::lispify "sockaddr_in_bsd" 'classname))
 (make-accessors #.(libevent2::lispify "sockaddr_in6" 'classname))
 (make-accessors #.(libevent2::lispify "addrinfo" 'classname))
 (make-accessors #.(libevent2::lispify "evutil_addrinfo" 'classname))
