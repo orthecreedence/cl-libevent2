@@ -34,11 +34,16 @@
                (if (and (> (length str) l) (string= prf (subseq str 0 l)))
                  (subseq str l)
                  str))))
-    (let ((fix (case flag
-                 ((constant enumvalue) "+")
-                 (variable "*")
-                 (t ""))))
-      (intern (concatenate 'string fix (nreverse (helper (concatenate 'list (strip-prefix "cp" name)) nil nil)) fix)
+    (let* ((fix (case flag
+                  ((constant enumvalue) "+")
+                  (variable "*")
+                  (t "")))
+           (symstr (concatenate 'string fix (nreverse (helper (concatenate 'list (strip-prefix "cp" name)) nil nil)) fix))
+           ;; test for "modern" lisp
+           (case-insensitive-p (eq (intern "MYSYM" :libevent2) 'libevent2::mysym)))
+      (intern (if case-insensitive-p
+                  symstr
+                  (string-downcase symstr))
         package))))
 
 (defun version<= (str-version str-cmp)
