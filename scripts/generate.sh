@@ -51,7 +51,7 @@ cat <<-EOFMAC > accessors.lisp
                                                       "-"
                                                       (symbol-name slot-name)))
              append (list \`(defmacro ,accessor-name (ptr)
-                             (list 'foreign-slot-value ptr '',(intern (string c-struct) :libevent2) '',slot-name))
+                             (list 'foreign-slot-value ptr '(le::cffi-type ,(intern (string c-struct) :libevent2)) '',slot-name))
                           \`(export ',accessor-name :libevent2.accessors)))))
 
 EOFMAC
