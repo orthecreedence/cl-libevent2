@@ -46,12 +46,8 @@
                   (string-downcase symstr))
         package))))
 
-(defun version<= (str-version str-cmp)
-  (not (asdf:version-satisfies (asdf:find-system :cffi) str-cmp)))
-
 (defmacro cffi-type (type)
-  (let ((version (asdf:component-version (asdf:find-system :cffi))))
-    (if (version<= version "0.11.0")
-        `(quote ,type)
-        `(quote (:struct ,type)))))
+  (if (asdf:version-satisfies (asdf:find-system :cffi) "0.11.0")
+      `(quote (:struct ,type))
+      `(quote ,type)))
 
