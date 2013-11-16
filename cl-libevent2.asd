@@ -3,7 +3,7 @@
   :license "MIT"
   :version "0.1.5"
   :description "Low-level libevent2 bindings for Common Lisp."
-  :depends-on (#:cffi #:cffi-libffi)
+  :depends-on (#:cffi)
   :components ((:file "libevent2")
                (:file "wrapper" :depends-on ("libevent2"))
                (:file "bindings" :depends-on ("wrapper"))
