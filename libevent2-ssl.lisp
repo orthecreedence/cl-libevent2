@@ -9,7 +9,8 @@
     (:darwin (:or "libevent_openssl.dylib"
                   ; brew's install of libevent on Mac OX X
                   "/usr/local/lib/libevent_openssl.dylib"))
-    (:unix (:or "libevent_openssl.so"
+    (:unix (:or "/usr/local/lib/event2/libevent_openssl.so"
+                "libevent_openssl.so"
                 "libevent_openssl-2.0.so.5"
                 "/usr/lib/libevent_openssl.so"
                 "/usr/local/lib/libevent_openssl.so"))
