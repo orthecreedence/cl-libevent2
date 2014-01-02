@@ -14,7 +14,8 @@
               "libevent_core.dylib"
               ; brew's install of libevent on Mac OX X
               "/usr/local/lib/libevent_core.dylib"))
-    (:unix (:or "libevent_core.so"
+    (:unix (:or "/usr/local/lib/event2/libevent_core.so"
+                "libevent_core.so"
                 "libevent_core-2.0.so.5"
                 "/usr/lib/libevent_core.so"
                 "/usr/local/lib/libevent_core.so"))
@@ -28,7 +29,8 @@
     (:darwin (:or "libevent_extra.dylib"
                 ; brew's install of libevent on Mac OX X
               "/usr/local/lib/libevent_extra.dylib"))
-    (:unix (:or "libevent_extra.so"
+    (:unix (:or "/usr/local/lib/event2/libevent_extra.so"
+                "libevent_extra.so"
                 "libevent_extra-2.0.so.5"
                 "/usr/lib/libevent_extra.so"
                 "/usr/local/lib/libevent_extra.so"))
