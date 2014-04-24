@@ -13,6 +13,7 @@ sed -i 's|( 127)|(- 127)|' bindings.lisp
 sed -i 's|(cl:- "2.0.20" "stable")|"2.0.20-stable"|' bindings.lisp
 sed -i 's|( 127)|(- 127)|' bindings-ssl.lisp
 sed -i 's|(cl:- "2.0.20" "stable")|"2.0.20-stable"|' bindings-ssl.lisp
+sed -i 's@) #\.(lispify "\(timeval\|event_watermark\|evbuffer_ptr\)" .classname)@) (:pointer (:struct #.(lispify "\1" '"'"'classname)))@g' bindings.lisp
 
 # ------------------------------------------------------------------------------
 # make our exports
