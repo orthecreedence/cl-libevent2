@@ -47,7 +47,7 @@ cat <<-EOFMAC > accessors.lisp
 
 (defmacro make-accessors (c-struct)
   \`(progn
-     ,@(loop for slot-name in (foreign-slot-names (intern (string c-struct) :libevent2))
+     ,@(loop for slot-name in (foreign-slot-names \`(:struct ,(intern (string c-struct) :libevent2)))
              for accessor-name = (intern (concatenate 'string (symbol-name c-struct)
                                                       "-"
                                                       (symbol-name slot-name)))
