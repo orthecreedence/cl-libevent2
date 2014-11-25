@@ -47,7 +47,9 @@
   (define-foreign-library libevent2-pthreads
     (:darwin (:or "libevent_pthreads.dylib"
                 ; brew's install of libevent on Mac OX X
-              "/usr/local/lib/libevent_pthreads.dylib"))
+                "/usr/local/lib/libevent_pthreads.dylib"
+                ; macports
+                "/opt/local/lib/libevent_pthreads.dylib"))
     (:unix (:or "/usr/local/lib/event2/libevent_pthreads.so"
                 "libevent_pthreads.so"
                 "libevent_pthreads-2.0.so.5"
