@@ -38,5 +38,21 @@
                    "libevent_extra-2-0-5.dll"))
     (t (:default "libevent_extra")))
   (unless (foreign-library-loaded-p 'libevent2-extra)
-    (use-foreign-library libevent2-extra)))
+    (use-foreign-library libevent2-extra))
+
+  (define-foreign-library libevent2-pthreads
+    (:darwin (:or "libevent_pthreads.dylib"
+                ; brew's install of libevent on Mac OX X
+              "/usr/local/lib/libevent_pthreads.dylib"))
+    (:unix (:or "/usr/local/lib/event2/libevent_pthreads.so"
+                "libevent_pthreads.so"
+                "libevent_pthreads-2.0.so.5"
+                "/usr/lib/libevent_pthreads.so"
+                "/usr/local/lib/libevent_pthreads.so"))
+    (t (:default "libevent_pthreads")))
+  #+unix
+  (handler-case
+    (unless (foreign-library-loaded-p 'libevent2-pthreads)
+      (use-foreign-library libevent2-pthreads))
+    (cffi:load-foreign-library-error (e) (format t "error loading pthreads: ~a~%" e))))
 
